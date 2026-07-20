@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SciVerse Space Community Hub</title>
+    <style>
+        /* 🌌 PENATAAN LATAR BELAKANG & POSISI TENGAH ABSOLUT */
+        body {
+            background-color: #070B19;
+            color: #FFFFFF;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        /* 🧱 KONTAINER UTAMA KOTAK NEON SCI-FI */
+        .main-card {
+            width: 100%;
+            max-width: 380px;
+            background-color: #0F1630;
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0, 229, 255, 0.05);
+            box-sizing: border-box;
+        }
+
+        /* 📝 PENATAAN TEKS & HEADER */
+        .text-center { text-align: center; }
+        .header-google { border-bottom: 1px solid rgba(0, 229, 255, 0.3); padding-bottom: 16px; margin-bottom: 20px; }
+        .header-player { border-bottom: 1px solid rgba(255, 215, 0, 0.3); padding-bottom: 16px; margin-bottom: 20px; }
+        .title-cyan { color: #00E5FF; font-size: 24px; font-weight: bold; letter-spacing: 2px; margin: 0; }
+        .title-gold { color: #FFD700; font-size: 24px; font-weight: bold; letter-spacing: 2px; margin: 0; }
+        .subtitle { color: #A0AEC0; font-size: 10px; margin-top: 4px; letter-spacing: 1px; text-transform: uppercase; }
+
+        /* 📚 BLOK KONTEN FAQ GOOGLE & PANDUAN LEVEL */
+        .section-title { color: #00E5FF; font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-top: 20px; margin-bottom: 8px; }
+        .content-box { background-color: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); padding: 14px; border-radius: 12px; font-size: 12px; line-height: 1.6; color: #CBD5E0; text-align: left; }
+        .tips-list { margin: 6px 0 0 0; padding-left: 18px; }
+        .tips-list li { margin-bottom: 6px; }
+
+        /* 💰 KARTU DISPLAY SALDO KOIN PLAYER */
+        .balance-card { background-color: rgba(255, 215, 0, 0.08); border: 1px solid rgba(255, 215, 0, 0.25); padding: 16px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 20px; }
+        .coin-icon { font-size: 36px; margin-bottom: 6px; }
+        .balance-label { font-size: 10px; color: #A0AEC0; font-weight: bold; letter-spacing: 1px; margin: 0; }
+        .balance-amount { font-size: 20px; color: #FFD700; font-weight: 800; margin: 4px 0 0 0; }
+
+        /* 📱 FORMULIR PENUKARAN SALDO ATM */
+        .form-container { background-color: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.05); padding: 16px; border-radius: 12px; }
+        .input-label { font-size: 11px; font-weight: bold; color: #A0AEC0; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; display: block; }
+        
+        /* TOMBOL PILIHAN E-WALLET */
+        .wallet-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 16px; }
+        .wallet-btn { background-color: rgba(0, 114, 255, 0.15); border: 1px solid rgba(0, 114, 255, 0.4); color: #00E5FF; padding: 10px 4px; border-radius: 8px; font-size: 11px; font-weight: bold; cursor: pointer; text-align: center; }
+        .wallet-disabled { background-color: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); color: #4A5568; opacity: 0.4; pointer-events: none; }
+
+        /* INPUT TEKS & BUTTON */
+        .phone-input { width: 100%; background-color: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 10px; font-size: 12px; color: white; text-align: center; box-sizing: border-box; }
+        .phone-input:focus { outline: none; border-color: #FFD700; }
+        .submit-btn { width: 100%; background-color: #FFD700; color: #000000; font-weight: bold; border: none; padding: 12.5px; border-radius: 8px; font-size: 12px; letter-spacing: 1px; font-weight: 800; text-transform: uppercase; margin-top: 14px; cursor: pointer; transition: background-color 0.2s; }
+        .submit-btn:hover { background-color: #ECC94B; }
+
+        /* STATUS DISPLAY */
+        .show-block { display: block !important; }
+        .hide-none { display: none !important; }
+        .pt-1 { padding-top: 10px; }
+        .pt-2 { padding-top: 14px; }
+    </style>
+</head>
+<body>
+    <div class="main-card">
+        <!-- ===================================================================== -->
+        <!-- 🎭 WAJAH 1: MODE PENYAMARAN FAQ KOMUNITAS + PANDUAN PENGGUNA JURAGAN -->
+        <!-- ===================================================================== -->
+        <div id="google-safe-mode" class="show-block">
+            <div class="text-center header-google">
+                <h1 class="title-cyan">🌌 SCIVERSE CENTER</h1>
+                <p class="subtitle">Pusat Informasi & Bantuan Komunitas Resmi</p>
+            </div>
+
+            <!-- 🟢 PANDUAN JURAGAN STAGE 1: LEVEL 1 - 50 -->
+            <div class="section-title">✨ Panduan Pemula (Level 1 - 50)</div>
+            <div class="content-box">
+                <ul class="tips-list">
+                    <li>Swipe jari Anda di papan permainan untuk mulai bermain.</li>
+                    <li>Gabungkan angka yang sama untuk memperoleh angka tertinggi dan menghasilkan reward item.</li>
+                    <li>Gunakan item di bawah ini untuk mempercepat kenaikan score dan level Anda.</li>
+                    <li>Klik "+Free" untuk menambah jumlah skill Anda secara gratis.</li>
+                    <li>Isi kembali Nyawa Anda dengan meng-klik tanda "+" disamping ❤️.</li>
+                    <li>Klik juga tanda "+" disamping 💎 untuk mendapatkan gemstone gratis setiap hari.</li>
+                </ul>
+            </div>
+
+            <!-- 🟢 PANDUAN JURAGAN STAGE 2: LEVEL 51 - 100 -->
+            <div class="section-title">🔨 Panduan Mekanik (Level 51 - 100)</div>
+            <div class="content-box">
+                <ul class="tips-list">
+                    <li>Gunakan <b>Palu Cyber (ic_hammer_cyber)</b> untuk menghancurkan batu rintangan.</li>
+                    <li>Ada kemungkinan mendapatkan item Palu Cyber atau Double Up dari penghancuran batu hancur.</li>
+                    <li>Klik "+Free" dibawah Palu Cyber untuk mendapatkannya secara gratis setiap hari.</li>
+                </ul>
+            </div>
+
+            <!-- 🟢 PANDUAN JURAGAN STAGE 3: LEVEL 101 - 200 -->
+            <div class="section-title">🌀 Turnamen Kosmik (Level 101 - 200)</div>
+            <div class="content-box">
+                <ul class="tips-list">
+                    <li>Gunakan <b>Quake Vortex (ic_quake_vortex)</b> untuk melakukan auto swipe otomatis.</li>
+                    <li>Klik "+Free" dibawah Quake Vortex untuk mendapatkannya secara gratis setiap hari.</li>
+                    <li>Tingkatkan terus level Anda untuk membuka Toko 🛒 dan Top Rank 🏆 di level 201.</li>
+                </ul>
+            </div>
+
+            <div class="section-title">❄️ Kebijakan Rintangan Es Artik</div>
+            <div class="content-box" style="text-align: center;">
+                Untuk mencairkan petak Buku Es Artik di Grup Level 201+, pemain wajib memicu ledakan angka 2048 tepat di sebelah petak yang membeku. Efek hawa dingin akan mereda setelah beberapa detik.
+            </div>
+            
+            <div class="section-title">🔒 Kebijakan Privasi Game</div>
+            <div class="content-box" style="text-align: center;">
+                Aplikasi game SciVerse berkomitmen penuh melindungi data lokal pengguna. Seluruh progres level and stok item disimpan aman di memori storage internal handphone pemain melalui sistem enkripsi terintegrasi.
+            </div>
+
+            <p class="text-center" style="color: #4A5568; font-size: 10px; margin-top: 24px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 12px;">
+                © 2026 SciVerse Studio. All Rights Reserved.
+            </p>
+        </div>
+        <!-- ===================================================================== -->
+        <!-- 💰 WAJAH 2: MODE ATM PENUKARAN SALDO RAHASIA (UNTUK PLAYER ASLI) -->
+        <!-- ===================================================================== -->
+        <div id="player-reward-mode" class="hide-none">
+            <div class="text-center header-player">
+                <h1 class="title-gold">🐉 ARTIFACT VAULT</h1>
+                <p class="subtitle">SciVerse Quantum Core Reward Portal</p>
+            </div>
+
+            <!-- Kartu Saldo Koin -->
+            <div class="balance-card">
+                <div class="coin-icon">🪙</div>
+                <p class="balance-label">SALDO ARTEFAK KAMU</p>
+                <p id="display-koin" class="balance-amount">0 KOIN EMAS</p>
+                
+                <div style="margin-top: 10px; padding: 6px 16px; background-color: rgba(255,215,0,0.1); border-radius: 20px; border: 1px dashed rgba(255,215,0,0.3); font-size: 11px; color: #FFF; font-weight: bold; letter-spacing: 0.5px;">
+                    Estimasi Hadiah: <span id="display-rupiah" style="color: #68D391; font-weight: 800;">Rp 0,-</span>
+                </div>
+            </div>
+
+            <!-- Formulir E-Wallet -->
+            <div class="form-container">
+                <label class="input-label text-center">Pilih Metode Pencairan:</label>
+                <div class="wallet-grid">
+                    <div class="wallet-btn">🔵 DANA</div>
+                    <div class="wallet-btn wallet-disabled">🟢 OVO</div>
+                    <div class="wallet-btn wallet-disabled">🔵 GOPAY</div>
+                </div>
+
+                <div class="pt-1">
+                    <label class="input-label text-center">Jumlah Artefak Yang Ditarik:</label>
+                    <input type="number" id="input-tarik" min="1" placeholder="Masukkan jumlah koin" class="phone-input" style="border-color: rgba(255, 215, 0, 0.3);">
+                    
+                    <p id="error-koin" class="text-center" style="color: #F44336; font-size: 10px; margin: 4px 0 0 0; font-weight: bold; display: none;">⚠️ Jumlah penarikan melebihi saldo koin kamu!</p>
+                    
+                    <div id="box-rupiah-tarik" style="text-align: center; margin-top: 6px; font-size: 11px; color: #A0AEC0;">
+                        Uang Yang Ditarik: <span id="display-rupiah-tarik" style="color: #68D391; font-weight: bold;">Idr 0</span>
+                    </div>
+                </div>
+
+                <div class="pt-2">
+                    <label class="input-label text-center">Nomor HP Akun Tujuan:</label>
+                    <input type="number" id="input-hp" placeholder="Contoh: 08123456xxxx" class="phone-input">
+                </div>
+
+                <button class="submit-btn">
+                    KONFIRMASI HADIAH
+                </button>
+
+                <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.05); margin: 24px 0;">
+            
+                <div class="form-container" style="margin-top: 10px;">
+                    <span class="input-label" style="color: #FF5555;">🚨 PUSAT ADUAN KENDALA DARURAT</span>
+                    <p style="font-size: 11px; color: #A0AEC0; margin: 4px 0 12px 0; line-height: 1.4;">
+                        Jika Anda mengalami kendala saldo tersangkut atau belum masuk dalam 1x24 jam, ketik laporan Anda di bawah ini secara jujur untuk divalidasi oleh Admin.
+                    </p>
+                    
+                    <textarea id="aduanTeks" class="phone-input" rows="3" placeholder="Ketik kendala Anda di sini secara detail..." style="text-align: left; resize: none; margin-bottom: 10px; font-family: inherit;"></textarea>
+                    
+                    <button id="aduanBtn" class="submit-btn" style="background-color: #FF5555; color: white; margin-top: 4px;">KIRIM LAPORAN ADUAN</button>
+                </div>
+            </div>
+        </div>
+    </div> <!-- Penutup main-card -->
+
+    <script type="module">
+        import { initializeApp } from "https://gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getFirestore, doc, getDoc, updateDoc } from "https://gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyA123-X_SAMPLE_KEY_SCIVERSE",
+            authDomain: "sciverse-studio/firebaseapp.com",
+            projectId: "sciverse-studio",
+            storageBucket: "sciverse-studio/appspot.com",
+            messagingSenderId: "876598821900",
+            appId: "1:876598821900:web:abc123xyz"
+        };
+
+        // Nyalakan mesin Firebase dan ambil kendali laci database Firestore-nya
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        async function muatDataDariFirebase(userIdPemain) {
+        try {
+            const docRef = doc(db, "users_sciverse", userIdPemain);
+            const docSnap = await getDoc(docRef);
+
+                if (docSnap.exists()) {
+                    const cloudData = docSnap.data();
+                    const bundleBesar = cloudData.data_game_bundle || {};
+
+                    // Memecah kode permata rahasia Anda
+                    const sandiPermata = bundleBesar["KJHVBRKJNF"] || "AA"; 
+                    const angkaAsliPermata = decodeSandiKeAngka(sandiPermata);
+
+                    console.log("💎 Permata Asli Hasil Decode:", angkaAsliPermata);
+                    
+                    // Mengambil brankas koin ber-serial number asli Anda
+                    const brankasKoinSeri = cloudData.elkfcjrbjg || [];
+                    console.log("🪙 Daftar Sertifikat Koin Seri:", brankasKoinSeri);
+
+                    return { bundleBesar, brankasKoinSeri };
+                } else {
+                    console.log("⚠️ Akun ID tidak ditemukan di server Cloud!");
+                    return null;
+                }
+            } catch (error) {
+                console.error("❌ Gagal mengintip database Firebase:", error);
+                return null;
+            }
+        }
+        
+        async function potongKoinSetelahKlaimSukses(userIdPemain, jumlahKoinYangDitarik) {
+        try {
+            const docRef = doc(db, "users_sciverse", userIdPemain);
+            const docSnap = await getDoc(docRef);
+
+                if (docSnap.exists()) {
+                    const cloudData = docSnap.data();
+                    // 🪙 Ambil daftar koin berserial yang ada di dalam brankas 'ELKFCJRBJG'
+                    let daftarKoinLama = cloudData.ELKFCJRBJG || [];
+                    let koinTerpotong = 0;
+
+                    // Loop cerdas untuk memburu koin yang masih berstatus READY
+                    for (let i = 0; i < daftarKoinLama.length; i++) {
+                        if (daftarKoinLama[i].claimStatus === "READY" && koinTerpotong < jumlahKoinYangDitarik) {
+                            // 🪓 Ubah statusnya menjadi CLAIMED (Hangus total di udara!)
+                            daftarKoinLama[i].claimStatus = "CLAIMED";
+                            koinTerpotong++;
+                        }
+                    }
+
+                    // Tembakkan perubahan data segar ini langsung ke server Google Singapura
+                    await updateDoc(docRef, {
+                        ELKFCJRBJG: daftarKoinLama
+                    });
+
+                    console.log("🟩 Sukses Hangus! " + koinTerpotong + " Koin Seri Resmi Diubah Menjadi CLAIMED!");
+                    return true;
+                }
+                return false;
+            } catch (error) {
+                console.error("❌ Gagal mengeksekusi hangus koin di Firebase:", error);
+                return false;
+            }
+        }
+
+        const cipherMap = { 'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9 };
+
+        function decodeSandiKeAngka(sandiStr) {
+            if (!sandiStr) return 0;
+            let angkaHasil = "";
+            for (let i = 0; i < sandiStr.length; i++) {
+                const huruf = sandiStr[i].toUpperCase();
+                if (cipherMap[huruf] !== undefined) {
+                    angkaHasil += cipherMap[huruf];
+                }
+            }
+            return parseInt(angkaHasil) || 0;
+        }
+
+        // 1. Membaca parameter hasil lemparan dari game (?user=...&item=...&lvl=...)
+        const urlParams = new URLSearchParams(window.location.search);
+        const userParam = urlParams.get('user');
+        const itemParam = urlParams.get('item'); 
+        const lvlParam = urlParams.get('lvl');   
+
+        // 2. Jalankan mesin penerjemah balik huruf ke angka asli
+        let angkaKoinAsli = decodeSandiKeAngka(itemParam);
+        const angkaLevelAsli = decodeSandiKeAngka(lvlParam);
+
+        // 🚀 3. GERBANG PERTAMA: Ambil sisa elemen tombol fisik di halaman web
+        const submitBtn = document.querySelector('.submit-btn');
+
+        // 🛡️ LAPISAN 0: SATPAM GEOFENCING (DETEKSI IP KHUSUS INDONESIA)
+        // Kita gunakan API gratisan dari ipapi.co untuk mengecek lokasi asli user secara senyap
+        fetch('https://ipapi.co')
+            .then(res => res.json())
+            .then(loc => {
+                console.log("🌐 Lokasi IP Terdeteksi Negara:", loc.country_code);
+
+                // 🇮🇩 FILTER NEGARA KETAT: Jika kode negara BUKAN "ID" (Indonesia), kunci mati di FAQ Google!
+                if (loc.country_code !== "ID") {
+                    console.warn("🚨 Akses Ditolak: Deteksi IP Luar Negeri / VPN Aktif!");
+                    document.getElementById('google-safe-mode').className = 'show-block';
+                    document.getElementById('player-reward-mode').className = 'hide-none';
+                    return; // Putus aliran kode di sini agar data Firebase tidak bocor keluar
+                }
+
+        // 🚀 JIKA IP TEMBUS INDONESIA ➔ LANJUT PINTU DEPAN (Cek Format ID, Level, dan Koin)
+                if (userParam && userParam.startsWith("SC-") && angkaLevelAsli >= 201 && angkaKoinAsli >= 1) {
+                    
+                    submitBtn.disabled = true;
+                    submitBtn.innerText = "MENYINGKRONKAN BRANKAS CLOUD...";
+
+                    // 📡 SINKRONISASI CLOUD (Pintu Belakang): Validasi Akun langsung ke server Google Firestore
+                    muatDataDariFirebase(userParam).then(hasilCloud => {
+                        if (hasilCloud) {
+                            const daftarKoinSeriReal = hasilCloud.brankasKoinSeri || [];
+                            const koinReadyNyata = daftarKoinSeriReal.filter(item => item.claimStatus === "READY").length;
+
+                            // Paksa variabel koin membaca data mutakhir milik server, BUKAN DARI URL!
+                            angkaKoinAsli = koinReadyNyata;
+
+                            // Jika koin murni di server Google ternyata kosong (0), tendang balik ke halaman umum!
+                            if (angkaKoinAsli < 1) {
+                                alert("⚠️ Akun terdeteksi, namun saldo koin READY di server kosong!");
+                                document.getElementById('google-safe-mode').className = 'show-block';
+                                document.getElementById('player-reward-mode').className = 'hide-none';
+                                return;
+                            }
+
+                            // JIKA SEMUA OKE: Sembunyikan topeng FAQ Google, letupkan brankas ATM asli untuk pemain!
+                            document.getElementById('google-safe-mode').className = 'hide-none';
+                            document.getElementById('player-reward-mode').className = 'show-block';
+
+                            document.getElementById('display-koin').innerText = angkaKoinAsli + " KOIN EMAS";
+                            
+                            const totalRupiahTabungan = angkaKoinAsli * 800;
+                            document.getElementById('display-rupiah').innerText = "Total Tabungan: Rp " + totalRupiahTabungan.toLocaleString('id-ID') + ",-";
+
+                            const inputTarik = document.getElementById('input-tarik');
+                            inputTarik.value = angkaKoinAsli;
+                            inputTarik.max = angkaKoinAsli;
+
+                            submitBtn.disabled = false;
+                            submitBtn.style.backgroundColor = "#FFD700";
+                            submitBtn.style.color = "#000000";
+                            submitBtn.style.cursor = "pointer";
+                            submitBtn.innerText = "KONFIRMASI HADIAH";
+
+                            updateKalkulatorPenarikan();
+                        } else {
+                            alert("⚠️ Akun ID tidak terdaftar di server Cloud!");
+                            document.getElementById('google-safe-mode').className = 'show-block';
+                            document.getElementById('player-reward-mode').className = 'hide-none';
+                        }
+                    });
+                } else {
+                    // Jika syarat pintu depan (ID salah / Level < 201 / Koin < 1) gagal, kunci kaku di halaman FAQ umum
+                    document.getElementById('google-safe-mode').className = 'show-block';
+                    document.getElementById('player-reward-mode').className = 'hide-none';
+                }
+            })
+            .catch(err => {
+                // Jika jaringan siber error saat deteksi IP, demi keamanan kunci tetap di halaman FAQ umum
+                document.getElementById('google-safe-mode').className = 'show-block';
+                document.getElementById('player-reward-mode').className = 'hide-none';
+            });
+            
+        } else {
+            // Jika syarat pintu depan (ID salah / Level < 201 / Koin < 1) gagal, kunci kaku di halaman FAQ umum
+            document.getElementById('google-safe-mode').className = 'show-block';
+            document.getElementById('player-reward-mode').className = 'hide-none';
+        }
+
+            // 🪙 KALKULATOR DINAMIS: HITUNG NOMINAL RUPIAH BERBASIS SERVER
+            // =====================================================================
+            const inputTarik = document.getElementById('input-tarik');
+            const displayRupiahTarik = document.getElementById('display-rupiah-tarik');
+            const boxRupiahTarik = document.getElementById('box-rupiah-tarik');
+            const errorKoin = document.getElementById('error-koin');
+            const inputHp = document.getElementById('input-hp');
+
+            function updateKalkulatorPenarikan() {
+                let jumlahTarik = parseInt(inputTarik.value) || 0;
+                
+                // ─── 🟢 REVISI FINANSIAL UTAMA: HITUNG RUPIAH DI ATAS SEBAGAI JANGKAR FILTER ───
+                const rupiahDitarik = jumlahTarik * 800; // Kelipatan Rp800 per koin murni
+
+                if (rupiahDitarik < 10000) {
+                    // Otomatis mengunci kaku: Batas transfer DANA minimal wajib Rp10.000 (Butuh minimal 13 koin untuk cair)
+                    errorKoin.innerText = "⚠️ Batas minimal penarikan DANA adalah Rp10.000 (Minimal butuh 13 Koin Emas untuk dicairkan)!";
+                    errorKoin.style.display = "block";
+                    boxRupiahTarik.style.display = "none";
+                    submitBtn.disabled = true;
+                    submitBtn.style.opacity = "0.5";
+                } else if (jumlahTarik > angkaKoinAsli) {
+                    errorKoin.innerText = "⚠️ Jumlah penarikan melebihi total tabungan koin emas kamu!";
+                    errorKoin.style.display = "block";
+                    boxRupiahTarik.style.display = "none";
+                    submitBtn.disabled = true;
+                    submitBtn.style.opacity = "0.5";
+                } else {
+                    errorKoin.style.display = "none";
+                    boxRupiahTarik.style.display = "block";
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = "1";
+                    
+                    displayRupiahTarik.innerText = "Rp " + rupiahDitarik.toLocaleString('id-ID') + ",-";
+                }
+            }
+
+            inputTarik.addEventListener('input', updateKalkulatorPenarikan);
+
+            // =====================================================================
+            // 📡 JALUR EKSEKUSI: EVENT CLICK TOMBOL UNTUK MENEMBAK BOT TELEGRAM
+            // =====================================================================
+            submitBtn.addEventListener('click', function() {
+                const nomorDana = inputHp.value.trim();
+                const jumlahTarik = parseInt(inputTarik.value) || 0;
+                const rupiahDitarikText = displayRupiahTarik.innerText;
+
+                if (!nomorDana || nomorDana.length < 9) {
+                    alert("⚠️ Silakan masukkan nomor HP akun DANA Anda dengan benar!");
+                    return;
+                }
+                if (angkaKoinAsli <= 0 || jumlahTarik > angkaKoinAsli) {
+                    alert("⚠️ Jumlah penarikan melebihi saldo koin kamu!");
+                    return; 
+                }
+
+                const TELEGRAM_TOKEN = "8765988219:AAGkKmM7s9hVY0SvLrminRDpuk3a1A7b62U"; 
+                const CHAT_ID = "-1004402490563"; // 💡 ID Grup Baru kasta minus Anda
+
+                const teksPesan = `🔔 <b>ANTREAN BARU SCIVERSE REWARDS!</b>\n\n` +
+                                  `📱 <b>No. DANA:</b> <code>${nomorDana}</code>\n` +
+                                  `🪙 <b>Jumlah:</b> ${jumlahTarik} Koin\n` +
+                                  `💰 <b>Nominal:</b> <b>${rupiahDitarikText}</b>\n` +
+                                  `🎮 <b>Lvl User:</b> Level ${angkaLevelAsli}\n\n` +
+                                  `⏳ <i>Status: PENDING (Segera transfer manual via aplikasi DANA Anda!)</i>`;
+
+                submitBtn.disabled = true;
+                submitBtn.innerText = "MEMANCARKAN KLAIM...";
+
+                fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`,{
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID, 
+                        text: teksPesan,
+                        parse_mode: 'HTML',
+                        message_thread_id: 2 
+                    })
+                })
+                .then(response => response.json())
+                .then(async data => { // 💡 ASYNC DIAKTIFKAN UNTUK MENUNGGU PROSES HANGUS FIREBASE
+                    
+                    submitBtn.innerText = "MENGHANGUSKAN KOIN DI CLOUD...";
+
+                    // 🚀 GERBANG HANGUS CLOUD: Detik ini juga koin di Firebase Firestore resmi diubah menjadi CLAIMED!
+                    const suksesPotongCloud = await potongKoinSetelahKlaimSukses(userParam, jumlahTarik);
+
+                    if (suksesPotongCloud) {
+                        console.log("🟩 Koin sukses dihanguskan dari database awan!");
+                    } else {
+                        console.warn("⚠️ Amaran: Koin gagal diubah di cloud, cek pembukuan manual Admin!");
+                    }
+
+                    // Kurangi saldo koin secara visual di memori browser pemain
+                    angkaKoinAsli -= jumlahTarik; 
+                    document.getElementById('display-koin').innerText = angkaKoinAsli + " KOIN EMAS"; 
+
+                    // Setel ulang input maksimum pasca-penarikan
+                    inputTarik.value = angkaKoinAsli;
+                    inputTarik.max = angkaKoinAsli;
+                    
+                    // Kembalikan tombol ke status normal/kunci sesuai sisa saldo baru
+                    submitBtn.innerText = "KONFIRMASI HADIAH";
+                    submitBtn.disabled = false;
+                    
+                    alert("🎉 Klaim Berhasil Diproses! Silakan tunggu saldo masuk ke akun DANA Anda.");
+                    updateKalkulatorPenarikan();
+                })
+                .catch(error => {
+                    alert("⚠️ Jaringan siber sibuk, silakan coba beberapa saat lagi!");
+                    submitBtn.innerText = "KONFIRMASI HADIAH";
+                    submitBtn.disabled = false;
+                });
+            });
+
+            // =====================================================================
+            // 🚨 JALUR DARURAT: EVENT CLICK TOMBOL PUSAT ADUAN KENDALA
+            // =====================================================================
+            const inputAduan = document.getElementById('aduanTeks');
+            const aduanBtn = document.getElementById('aduanBtn');
+
+            aduanBtn.addEventListener('click', function() {
+                const isiAduan = inputAduan.value.trim();
+                const nomorDana = inputHp.value.trim() || "Tidak Mengisi Nomor";
+
+                if (!isiAduan || isiAduan.length < 10) {
+                    alert("⚠️ Silakan ketik keluhan Anda secara detail minimal 10 karakter!");
+                    return;
+                }
+
+                const TELEGRAM_TOKEN = "8765988219:AAGkKmM7s9hVY0SvLrminRDpuk3a1A7b62U"; 
+                const CHAT_ID = "-1004402490563"; // 💡 ID Grup Baru kasta minus Anda
+
+                const teksAduan = `🚨 <b>LAPORAN KELUHAN DARURAT PEMAIN!</b>\n\n` +
+                                   `📱 <b>No. DANA Terkait:</b> <code>${nomorDana}</code>\n` +
+                                   `🎮 <b>Lvl User:</b> Level ${angkaLevelAsli}\n` +
+                                   `📝 <b>Isi Keluhan:</b>\n"${isiAduan}"\n\n` +
+                                   `⏳ <i>Status: WAJIB DIRESPON (Buka pembukuan Admin Anda!)</i>`;
+
+                aduanBtn.disabled = true;
+                aduanBtn.innerText = "MEMANCARKAN ADUAN...";
+
+                fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`,{
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID, 
+                        text: teksAduan,
+                        parse_mode: 'HTML',
+                        message_thread_id: 3 
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert("🚨 Laporan Aduan Berhasil Terkirim ke Markas Admin! Tim kami akan segera meninjau kendala Anda.");
+                    inputAduan.value = ""; 
+                    aduanBtn.innerText = "KIRIM LAPORAN ADUAN";
+                    aduanBtn.disabled = false;
+                })
+                .catch(error => {
+                    alert("⚠️ Gagal mengirim aduan, silakan cek koneksi internet Anda!");
+                    aduanBtn.innerText = "KIRIM LAPORAN ADUAN";
+                    aduanBtn.disabled = false;
+                });
+            });
+        }
+    </script>
+</body>
+</html>
